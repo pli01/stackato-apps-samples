@@ -17,4 +17,7 @@ print "dbpass=$wgDBpassword\n";
 print "dbserver=$wgDBserver\n";
 print "dbport=$wgDBport\n";
 print "dbname=$wgDBname\n";
+#
+# TODO: MEMCACHED_URL
+#
 ?>
