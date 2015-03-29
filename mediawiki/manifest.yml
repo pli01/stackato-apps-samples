@@ -1,0 +1,15 @@
+applications:
+- name: myapp
+  framework:
+    name: php
+  services:
+    ${name}-db:
+      type: mysql
+    ${name}-memcached:
+      type: memcached
+  stackato:
+    hooks:
+      post-staging:
+      - echo "$DATABASE_URL"
+      - bash -x mediawiki-setup.sh
+
