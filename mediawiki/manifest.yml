@@ -1,5 +1,5 @@
 applications:
-- name: myapp
+- name: mediawiki
   framework:
     name: php
   services:
@@ -7,9 +7,13 @@ applications:
       type: mysql
     ${name}-memcached:
       type: memcached
+    ${name}-fs:
+      type: filesystem
   stackato:
     hooks:
+      pre-running:
+      - rm -rf images && ln -s $STACKATO_FILESYSTEM images
       post-staging:
       - echo "$DATABASE_URL"
+      - echo "MEMCACHED_URL"
       - bash -x mediawiki-setup.sh
-
