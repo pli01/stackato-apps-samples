@@ -27,7 +27,8 @@ sed -i 's/$wgEnableUploads = false;/$wgEnableUploads = true;/g' LocalSettings.ph
 # Activate memcache and sessions
 # user et pass pas utiliser en tcp mais en sasl
 sed -i 's/^$wgMainCacheType .*/$wgMainCacheType = CACHE_MEMCACHED;/g' LocalSettings.php
-sed -i 's|^$wgMemCachedServers .*|$wgMemCachedServers = array("'$mcserver':'$mcport'/'$mcname'");|g' LocalSettings.php
+#sed -i 's|^$wgMemCachedServers .*|$wgMemCachedServers = array("'$mcserver':'$mcport'/'$mcname'");|g' LocalSettings.php
+sed -i 's|^$wgMemCachedServers .*|$wgMemCachedServers = array("'$mcserver':'$mcport'");|g' LocalSettings.php
 
 cat << 'EOF_MEMCACHE' >> LocalSettings.php
 $wgSessionsInObjectCache = true;
@@ -48,4 +49,8 @@ $wgGroupPermissions['*']['createaccount'] = false;
 # Allow file uploads without restriction
 $wgCheckFileExtensions = false;
 $wgStrictFileExtensions = false;
+$wgDefaultSkin = 'Vector';
+# wfLoadSkin( 'Vector' );
+$wgVectorUseSimpleSearch = true;
+$wgVectorUseIconWatch = true;
 EOF

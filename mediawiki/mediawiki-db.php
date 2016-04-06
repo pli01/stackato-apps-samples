@@ -20,13 +20,24 @@ print "dbname=$wgDBname\n";
 
 ## MemCache settings
 $_wgMCConnectionString = getenv('MEMCACHED_URL');
-if (preg_match('%(.*?)://([^@]+)@([^:]+):([^:]+):(\d+)/(.*)%', $_wgMCConnectionString, $regs, PREG_OFFSET_CAPTURE)) {
- $wgMCtype = $regs[1][0];
- $wgMCuser = $regs[2][0];
- $wgMCpassword = $regs[3][0];
- $wgMCserver = $regs[4][0];
- $wgMCport = $regs[5][0];
- $wgMCname = $regs[6][0];
+#if (preg_match('%(.*?)://([^@]+)@([^:]+):([^:]+):(\d+)/(.*)%', $_wgMCConnectionString, $regs, PREG_OFFSET_CAPTURE)) {
+if (preg_match('%([^:]+):(\d+)%', $_wgMCConnectionString, $regs, PREG_OFFSET_CAPTURE)) {
+# $wgMCtype = $regs[1][0];
+# $wgMCuser = $regs[2][0];
+# $wgMCpassword = $regs[3][0];
+# $wgMCserver = $regs[4][0];
+# $wgMCport = $regs[5][0];
+# $wgMCname = $regs[6][0];
+ $wgMCtype = "";
+ $wgMCuser = "";
+ $wgMCpassword = "";
+ $wgMCserver = "";
+ $wgMCport = "";
+ $wgMCname = "";
+
+ $wgMCserver = $regs[1][0];
+ $wgMCport = $regs[2][0];
+
 } else {
     die("Failed to parse MemCached connection string");
 }
