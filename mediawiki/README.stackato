@@ -1,0 +1,7 @@
+curl --insecure -o stackato-3.2.4-linux-glibc2.3-x86_64.zip https://api.paas-284231194.apps.cloudmi.minint.fr/static/stackato-3.2.4-linux-glibc2.3-x86_64.zip
+
+curl -o mediawiki-snapshot-REL1_24-7255e7d.tar.gz https://tools.wmflabs.org/snapshots/builds/mediawiki-core/mediawiki-snapshot-REL1_24-7255e7d.tar.gz
+tar -zxvf mediawiki-snapshot-REL1_24-7255e7d.tar.gz
+
+curl -o skins/Vector-REL1_24-9ace28f.tar.gz https://extdist.wmflabs.org/dist/skins/Vector-REL1_24-9ace28f.tar.gz
+( cd skins; tar -zxvf Vector-REL1_24-9ace28f.tar.gz )
