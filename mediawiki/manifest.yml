@@ -15,5 +15,6 @@ applications:
       - rm -rf images && ln -s $STACKATO_FILESYSTEM images
       post-staging:
       - echo "$DATABASE_URL"
-      - echo "MEMCACHED_URL"
+      - echo "$MEMCACHED_URL"
+      - env
       - bash -x mediawiki-setup.sh
